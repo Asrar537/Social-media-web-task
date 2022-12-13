@@ -101,10 +101,7 @@ async function Getposts(URL) {
 const userResponseData = await userResponse.json();
 console.log(userResponseData)
   UserArray= userResponseData.users;
-//   ========Fetching comments==================
-  const commentResponse = await fetch(`https://dummyjson.com/comments`);
-    const commentResponseData = await commentResponse.json();
-      commentsArray= commentResponseData.comments;
+
 
 //   ========Fetching posts==================
 
@@ -116,21 +113,18 @@ console.log(userResponseData)
    console.log(postsArray);
    for (let i = 0; i < postsArray.length; i++) {
     let user=[];
-    let com= [];
+  
     for(u= 0; u < UserArray.length; u++){
         if( UserArray[u].id === postsArray[i].userId  ){
             user = UserArray[i];
         }
     }
+   //   ========Fetching comments==================
+  const commentResponse = await fetch(`https://dummyjson.com/posts/${postsArray[i].id}/comments`);
+  const commentResponseData = await commentResponse.json();
+  console.log(commentResponseData)
+    commentsArray= commentResponseData.comments;
    
-   
-
-    for(u= 0; u < commentsArray.length; u++){
-        if( commentsArray[u].id === postsArray[i].postId  ){
-            com = commentsArray[i];
-        }
-    }
-    
     const post = `
     <div class="feed">
     <div class="head">
@@ -179,16 +173,27 @@ console.log(userResponseData)
           })}  
       </p>
     </div>
-    <div class="comments text-muted">${com.id}
-      View all coomments
+    <div class="comments text-muted">
+    View all coomments
+    ${commentsArray.map((com, index) => { // displaying comments
+        // getting images of comments
+       
+      return `
+      <div class="all-comments"  >
+        <div class="user" id="users-comments">
+            <div class="info">
+                <h4 style="color:black;">${com.user.username}</h4>
+                <h5>${com.body}</h5>
+            </div>
+          
+          </div>
+        </div>`
+      })}
     </div>
   </div>
     `;
    feeds.innerHTML += post;
-  // feeds.innerHTML =""
-  // postsArray = data.posts;
-  // console.log("counting");
-  // feeds.innerHTML += feed;
+ 
 }
 
 }

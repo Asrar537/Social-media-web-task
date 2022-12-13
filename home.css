@@ -476,3 +476,19 @@ main .container .right{
         display: none;
     }
 }
+.comment-bar{
+    background-color: var(--color-light);
+    border-radius: var(--border-radius);
+    padding: var(--search-padding);
+}
+ .comment-bar input[type = "text"]{
+    background: transparent;
+    width: 30vw;
+    margin-left: 1rem;
+    font-size: 00.9rem;
+    color: var(--color-dark);
+}
+.comment-bar input[type = "text"]::placeholder{
+    color: var(--color-gray);
+
+}

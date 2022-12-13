@@ -175,20 +175,24 @@ console.log(userResponseData)
     </div>
     <div class="comments text-muted">
     View all coomments
-    ${commentsArray.map((com, index) => { // displaying comments
-        // getting images of comments
-       
+    ${commentsArray.map((com, index) => { 
       return `
       <div class="all-comments"  >
         <div class="user" id="users-comments">
             <div class="info">
                 <h4 style="color:black;">${com.user.username}</h4>
-                <h5>${com.body}</h5>
+                <h4 class ="text-muted">${com.body}</h4>
             </div>
           
           </div>
         </div>`
       })}
+      <div class="input-group">
+        <input type="text" class = "comment-bar" id = "comment-bar" placeholder="Write Comment">
+        <span class="input-group-btn">
+         <button class="btn btn-primary"  type="button">comment</button>
+         </span>
+    </div>
     </div>
   </div>
     `;

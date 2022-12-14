@@ -181,7 +181,7 @@ console.log(userResponseData)
         <div class="user" id="users-comments">
             <div class="info">
                 <h4 style="color:black;">${com.user.username}</h4>
-                <h4 class ="text-muted">${com.body}</h4>
+                <h4>${com.body}</h4>
             </div>
           
           </div>

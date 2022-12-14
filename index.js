@@ -9,9 +9,7 @@ function checkLogin() {
   
 async function LoginApi(){
 
-    if (Password.length < 7) {
-        alert("password must be more the 8 characters ");
-      } else {
+   
         //   Get user
         const res = await fetch("https://dummyjson.com/auth/login", {
           method: "POST",
@@ -34,7 +32,7 @@ async function LoginApi(){
           window.location.replace("home.html");
         } else {
           alert("please enter valid Info");
-        }}
+        }
 
 
 
